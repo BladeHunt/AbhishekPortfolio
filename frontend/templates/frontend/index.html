@@ -1,0 +1,31 @@
+{% extends "frontend/main.html" %} 
+
+{% block title %}Abhishek Pradhanang{% endblock %} 
+
+{% block links %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'frontend/css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="home-background">
+        <div class="content-colum">
+            {% load static %}
+            <img class="home-bg" src="{% static 'frontend/img/home-bg.jpg' %}" alt="Background Image for Index">
+            <div class="content-container">
+                <div class="home-content">
+                    <p>Greetings! My name is Abhishek Pradhanang and I am currently in my final year, finishing my Bachelor of Information Technology</p>
+                    <p>I have experience in Python, Java and Javascript. I am very interested in Web Development and Cyber Security.</p>
+                </div>
+                <div class="info">
+                    <span>Contact Me</span>
+                    <a href="https://github.com/bladehunt"><i class="fa fa-github"></i></a>
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/abhishek-pradhanang-499754169/"><i class="fa fa-linkedin"></i></a>
+                    <a href="mailto:pradhanang.abhishek@outlook.com"><i class="fa fa-envelope-o"></i></a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}

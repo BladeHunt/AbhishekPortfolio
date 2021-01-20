@@ -1,0 +1,18 @@
+{% extends "frontend/main.html" %} 
+
+{% block title %}
+    Work in Progress
+{% endblock %} 
+
+{% block content %} 
+    {% if page_type == 'error' %}
+        <canvas id="canvas-error">
+        </canvas>
+    {% else %}
+        <canvas id="canvas-progress">
+        </canvas>
+    {% endif %}
+     
+    {%load static%}
+    <script src="{% static 'frontend/js/script.js' %} "></script>
+{% endblock %}

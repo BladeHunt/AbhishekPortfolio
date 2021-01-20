@@ -1,0 +1,32 @@
+{% extends "frontend/main.html" %} 
+
+{% block links %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'frontend/css/projects.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="card-container">
+        {% for blog in blogs %} 
+            <div class="main-card">
+                <div class="card h-100">
+                    <img src="{{blog.upload}}" class="card-img-top" alt="{{blog.name}}">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{blog.slug}}">
+                                {{blog.name}}
+                            </a>
+                        </h5>
+                        <p class="card-text">{{blog.short_description|safe|truncatechars:100}}</p>
+                        {% for tag in blog.tag.all %}
+                            <a href="{{link|lower}}" class="btn btn-primary">{{tag}}</a> 
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No matches found for <b>{{tag}}</b></p>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

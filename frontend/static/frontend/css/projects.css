@@ -1,0 +1,14 @@
+/* Projects */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.main-card {
+  padding: 20px;
+}
+
+.card-img-top {
+  height: 30vw;
+  object-fit: cover;
+}

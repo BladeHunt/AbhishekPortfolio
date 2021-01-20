@@ -1,0 +1,32 @@
+{% extends "frontend/main.html" %} {% block title %}Projects{% endblock %}
+
+{% block links %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'frontend/css/projects.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="card-container">
+        {% for project in projects %}
+            <div class="main-card">
+                <div class="card h-100">
+                    <img src="{{project.upload}}" class="card-img-top" alt="project.name">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{project.slug}}">
+                                {{project.name}}
+                            </a>
+                        </h5>
+                        {{project.slug}}
+                        <p class="card-text">{{project.short_description|safe|truncatechars:100}}</p>
+                        {% for tag in project.tag.all %}
+                            <a href="{{link|lower}}" class="btn btn-primary">{{tag}}</a> 
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %} 
+    </div>    
+{% endblock %}

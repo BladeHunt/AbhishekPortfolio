@@ -1,0 +1,63 @@
+.wd-100 {
+  width: 100%;
+  height: 100%;
+}
+
+.normal-list {
+  list-style-type: disc;
+  padding: 5px;
+}
+
+.pad-20 {
+  padding: 20px;
+}
+
+.pad-10 {
+  padding: 10px;
+}
+
+.pad-des {
+  padding: 20px 50px 20px 20px;
+}
+
+.portfolio-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.portfolio-personal-info {
+  text-align: center;
+  display: grid;
+  grid-gap: 10px;
+}
+
+.portfolio-summary img {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1150px) {
+  .portfolio-container {
+    display: block;
+  }
+  .portfolio-personal-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  h2 {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .portfolio-personal-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .info span {
+    font-size: 16px;
+    text-align: bottom;
+  }
+}

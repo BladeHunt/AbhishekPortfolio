@@ -1,0 +1,40 @@
+/* Index Page */
+
+.home-background {
+  max-width: 100%;
+  max-height: calc(100vh - 66px);
+  display: grid;
+  grid-template-columns: 1fr 1225px 1fr;
+  background-color: rgb(25, 21, 12);
+}
+
+.content-colum {
+  grid-column: 2;
+}
+
+.content-container {
+  position: absolute;
+  top: 50%;
+  color: white;
+  width: 500px;
+  margin-left: 80px;
+}
+
+.home-bg {
+  height: calc(100vh - 66px);
+  width: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 1225px) {
+  .home-background {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .content-container {
+    width: 40%;
+    top: 40%;
+  }
+}

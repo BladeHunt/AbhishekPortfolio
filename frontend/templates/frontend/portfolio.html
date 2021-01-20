@@ -1,0 +1,94 @@
+{% extends "frontend/main.html" %} 
+
+{% block links %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'frontend/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="portfolio-container">
+        <div class="portfolio-summary pad-20">
+            <div class="portfolio-personal-info">
+                <div class="portfolio-header">
+                    <h3>
+                        Personal Details
+                    </h3>
+                    {% load static %}
+                    <img src="{% static 'frontend/img/Abhishek.jpg' %}" alt="Passport Photo of Abhishek Pradhanang">
+                </div>
+                <div class="personal_details">
+                    <ul>
+                        <li><b>Name</b>: Abhishek Pradhanang</li>
+                        <li><b>Email</b>: pradhanang.abhishek@outlook.com</li>
+                        <hr>
+                    </ul>
+                    <h3>Skills</h3>
+                    <ul>
+                        <div class="skill-1">
+                            <li>Python</li>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 90%;" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="skill-2">
+                            <li>Java</li>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 80%;" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="skill-3">
+                            <li>Javascript</li>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 60%;" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="skill-4">
+                            <li>SQL</li>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 80%;" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="portfolio-description pad-des">
+                    <div class="portfolio-profile pad-10">
+                        <h2>Profile</h2>
+                        <p>Motivated student with proven time management and collaboration skills developed from working at Service Center, Department of Finance, in a professional team environment. Confident working with diverse situations and cultures, in
+                            which cultural awareness and appreciation are integral. Excellent academic background, maintaining results above the average. Strong interpersonal and communication, both written and verbal, skills demonstrated working as an Aspiration
+                            Agent at the University of Canberra.
+                        </p>
+                    </div>
+                    <div class="portfolio-education pad-10">
+                        <h2>Education</h2>
+                        {% for education in educations %}
+                            <h6 style="text-decoration: underline;">
+                                {{education.name}} ({{education.date_from}} - {{education.date_to}})
+                            </h6>
+                            <ul>
+                                <li>{{education.get_institution_display }}</i>
+                            </ul>
+                        {% endfor %}
+                    </div>
+                    <div class="portfolio-jobs pad-10">
+                        <h2>Employment History</h2>
+
+                    {% for job in jobs %}
+                        <div class="job-{{forloop.counter0}} pad-10">
+                            <h6 style="text-decoration: underline;">{{job.name}} | {{job.company}} | {{job.date_from}} – {{job.date_to}}</h6>
+            
+                            <ul>
+                                {% for desc in job.description %}
+                                    <li class="normal-list">
+                                        {{ desc }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

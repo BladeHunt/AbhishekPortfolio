@@ -17,7 +17,8 @@ ENV AWS_ACCESS_KEY_ID abc123!
 ENV AWS_SECRET_ACCESS_KEY 123abc!
 
 # Install Ubuntu dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get upgrade  && apt-get install -y --no-install-recommends \
+        libenchant1c2a \
         tzdata \
         libopencv-dev \ 
         build-essential \

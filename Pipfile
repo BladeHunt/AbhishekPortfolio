@@ -7,7 +7,6 @@ name = "pypi"
 django = "*"
 dj-database-url = "*"
 django-heroku = "*"
-django-tinymce4-lite = "*"
 djangorestframework = "*"
 gunicorn = "*"
 psycopg2 = "*"
@@ -15,6 +14,7 @@ requests = "*"
 pillow = "*"
 django-tinymce = "*"
 pyenchant = "*"
+django-tinymce4-lite = "*"
 
 [dev-packages]
 

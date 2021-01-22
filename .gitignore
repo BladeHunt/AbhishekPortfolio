@@ -1,5 +1,6 @@
 staticfiles/
 frontend/static/frontend/img/uploads/*
+postgres_data
 
 
 # Byte-compiled / optimized / DLL files

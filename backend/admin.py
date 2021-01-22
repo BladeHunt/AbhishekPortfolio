@@ -1,8 +1,4 @@
 from django.contrib import admin
-
-# Register your models here.
-
-from django.contrib import admin
 from .models import (
     AchievementList,
     AchievementTags,
@@ -15,9 +11,8 @@ from .models import (
 from tinymce import TinyMCE
 from django.db import models
 
+
 # Register your models here.
-
-
 class AchievementListAdmin(admin.ModelAdmin):
     fields = ["achievement_name", "achievement_description", "achievement_date"]
 

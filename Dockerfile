@@ -1,6 +1,7 @@
 # Base Image
 FROM ubuntu:18.04 as base
 
+USER root
 # set working directory
 WORKDIR /usr/src/
 
@@ -15,6 +16,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 # these are 100% optional here
 ENV AWS_ACCESS_KEY_ID abc123!
 ENV AWS_SECRET_ACCESS_KEY 123abc!
+
+
 
 # Install Ubuntu dependencies
 RUN apt-get update && apt-get upgrade  && apt-get install -y --no-install-recommends \
@@ -48,5 +51,7 @@ RUN pipenv install --skip-lock --system --dev
 
 # copy project to working dir
 COPY . /usr/src/
+
+RUN snap connect docker:removable-media
 
 CMD gunicorn Portfolio.wsgi:application --bind 0.0.0.0:$PORT

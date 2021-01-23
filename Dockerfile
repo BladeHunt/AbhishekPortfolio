@@ -52,4 +52,4 @@ RUN pipenv install --skip-lock --system --dev
 # copy project to working dir
 COPY . /usr/src/
 
-CMD gunicorn Portfolio.wsgi:application --bind 0.0.0.0:$PORT
+CMD gunicorn Portfolio.wsgi:application --bind 0.0.0.0:8000

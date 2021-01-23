@@ -26,7 +26,7 @@ jobs:
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/portfolio:${{ github.sha }}
             docker-compose push
 
-        - name: 'Deploy to Azure Container Instances'
+        - name: 'Deploy web to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'
           with:
             resource-group: ${{ secrets.RESOURCE_GROUP }}
@@ -37,3 +37,28 @@ jobs:
             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
             name: abhishekportfolio
             location: 'australiaeast'
+        
+        -  name: 'Deploy nginx to Azure Container Instances'
+           uses: 'azure/aci-deploy@v1'
+           with:
+             resource-group: ${{ secrets.RESOURCE_GROUP }}
+             dns-name-label: ${{ secrets.RESOURCE_GROUP }}${{ github.run_number }}
+             image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/nginx:latest
+             registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+             registry-username: ${{ secrets.REGISTRY_USERNAME }}
+             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+             name: nginxcontainer
+             location: 'australiaeast'
+             
+        -  name: 'Deploy postgres to Azure Container Instances'
+           uses: 'azure/aci-deploy@v1'
+           with:
+             resource-group: ${{ secrets.RESOURCE_GROUP }}
+             dns-name-label: ${{ secrets.RESOURCE_GROUP }}${{ github.run_number }}
+             image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/postgres:13.1-alpine
+             registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+             registry-username: ${{ secrets.REGISTRY_USERNAME }}
+             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+             name: postgrescontainer
+             location: 'australiaeast'
+

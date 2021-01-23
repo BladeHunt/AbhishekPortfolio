@@ -35,4 +35,4 @@ jobs:
             registry-username: ${{ secrets.REGISTRY_USERNAME }}
             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
             name: abhishek_portfolio
-            location: 'australia central'
+            location: 'australiaeast'

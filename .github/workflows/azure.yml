@@ -24,6 +24,7 @@ jobs:
             docker-compose up -d --build
             docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/portfolio:${{ github.sha }}
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/portfolio:${{ github.sha }}
+            docker-compose push
 
         - name: 'Deploy to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'

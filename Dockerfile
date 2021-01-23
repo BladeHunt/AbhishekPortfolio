@@ -20,7 +20,7 @@ ENV AWS_SECRET_ACCESS_KEY 123abc!
 
 
 # Install Ubuntu dependencies
-RUN apt-get update && apt-get upgrade  && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get upgrade  && apt update && apt install python -y && apt-get install -y --no-install-recommends \
         libenchant1c2a \
         tzdata \
         libopencv-dev \ 
@@ -51,5 +51,7 @@ RUN pipenv install --skip-lock --system --dev
 
 # copy project to working dir
 COPY . /usr/src/
+
+RUN python3 manage.py makemigration && python3 manage.py migrate
 
 CMD gunicorn Portfolio.wsgi:application --bind 0.0.0.0:$PORT

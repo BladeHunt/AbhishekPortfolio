@@ -17,6 +17,8 @@ services:
     volumes:
       - ./postgres_data:/home/runner/work/AbhishekPortfolio/AbhishekPortfolio/postgres_data
     env_file: .env-db
+    expose: 
+      - 5432
     ports:
       - 5432:5432
   redis:

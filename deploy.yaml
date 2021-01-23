@@ -1,0 +1,30 @@
+apiVersion: 2021-01-24
+location: centralus
+name: abhishekportfolio
+properties:
+  containers:
+  - name: abhishekportfolionginx
+    properties:
+      image: abhishekportfolio.azurecr.io/abhishekportfolio/nginx:latest
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+      ports:
+      - port: 5432:5432
+  - name: abhishekportfoliopostgres
+    properties:
+      image: abhishekportfolio.azurecr.io/abhishekportfolio/postgres:13.1-alpine
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+  osType: Linux
+  ipAddress:
+    type: Public
+    ports:
+    - protocol: tcp
+      port: 80
+
+tags: {tag: latest}
+type: Microsoft.ContainerInstance/containerGroups

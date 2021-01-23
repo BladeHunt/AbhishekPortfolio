@@ -96,7 +96,7 @@ DATABASES = {
         'NAME': "abhishek_portfolio",
         'USER': "abhishek",
         'PASSWORD': "Ronaldomessi#3",
-        'HOST': "/var/run/postgresql/",
+        'HOST': "db",
         'PORT': "5432",
     }
 }

@@ -52,6 +52,4 @@ RUN pipenv install --skip-lock --system --dev
 # copy project to working dir
 COPY . /usr/src/
 
-RUN python3 manage.py makemigrations && python3 manage.py migrate
-
 CMD gunicorn Portfolio.wsgi:application --bind 0.0.0.0:$PORT

@@ -3,7 +3,7 @@ version: "3.6"
 services:
   web:
     build: .
-    command: gunicorn abhishek_portfolio.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn abhishek_portfolio.wsgi:application --bind 0.0.0.0:80
     container_name: web
     volumes:
       - .:/usr/src/

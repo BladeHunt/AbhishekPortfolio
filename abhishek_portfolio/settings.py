@@ -19,7 +19,7 @@ SECRET_KEY = '4t8-cw2*g1zpu(e%f7m_3=^70go17&m@!ofi=6ot4z&c7wj6j!'
 DEBUG = False
 
 ALLOWED_HOSTS = ['apradhanang-portfolio.herokuapp.com',
-                 'apradhanang.com', 'www.apradhanang.com']
+                 'apradhanang.com', 'www.apradhanang.com', 'abhishekproject53.australiaeast.azurecontainer.io']
 
 
 # Application definition

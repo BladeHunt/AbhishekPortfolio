@@ -24,7 +24,8 @@ services:
     ports:
       - 5432:5432
   nginx:
-    container_name: abhishekportfolio.azurecr.io/abhishekportfolio/nginx:latest
+    image: abhishekportfolio.azurecr.io/abhishekportfolio/nginx:latest
+    container_name: nginx
     build: ./nginx
     ports:
       - 8000:80

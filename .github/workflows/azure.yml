@@ -24,8 +24,9 @@ jobs:
             docker-compose up -d --build
             docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/portfolio:${{ github.sha }}
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/portfolio:${{ github.sha }}
+            docker-compose push
 
-        - name: 'Deploy to Azure Container Instances'
+        - name: 'Deploy web to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'
           with:
             resource-group: ${{ secrets.RESOURCE_GROUP }}
@@ -34,5 +35,30 @@ jobs:
             registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
             registry-username: ${{ secrets.REGISTRY_USERNAME }}
             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-            name: abhishekportfolio
+            name: abhishekportfolioweb
             location: 'australiaeast'
+        
+        -  name: 'Deploy nginx to Azure Container Instances'
+           uses: 'azure/aci-deploy@v1'
+           with:
+             resource-group: ${{ secrets.RESOURCE_GROUP }}
+             dns-name-label: ${{ secrets.RESOURCE_GROUP }}-nginx-${{ github.run_number }}
+             image: nginx
+             registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+             registry-username: ${{ secrets.REGISTRY_USERNAME }}
+             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+             name: abhishekportfolionginx
+             location: 'australiaeast'
+             
+        -  name: 'Deploy postgres to Azure Container Instances'
+           uses: 'azure/aci-deploy@v1'
+           with:
+             resource-group: ${{ secrets.RESOURCE_GROUP }}
+             dns-name-label: ${{ secrets.RESOURCE_GROUP }}-postgres-${{ github.run_number }}
+             image: postgres:13.1-alpine
+             registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+             registry-username: ${{ secrets.REGISTRY_USERNAME }}
+             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+             name: abhishekportfoliopostgres
+             location: 'australiaeast'
+
